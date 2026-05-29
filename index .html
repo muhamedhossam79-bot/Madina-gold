@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>مجوهرات المدينة - حسام نصار</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --gold-primary: #D4AF37;
+            --gold-light: #F4E4BC;
+            --gold-dark: #AA8C2C;
+            --gold-bright: #FFD700;
+            --black-primary: #0a0a0a;
+            --black-secondary: #1a1a1a;
+            --black-card: #141414;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --green-profit: #00d084;
+        }
+
+        html, body {
+            font-family: 'Tajawal', sans-serif;
+            background: var(--black-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        .app-wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: linear-gradient(135deg, #1a0a00 0%, #0a0a0a 50%, #1a0a00 100%);
+            border-bottom: 3px solid var(--gold-primary);
+            padding: 15px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.15), transparent);
+            animation: shine 4s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-icon {
+            width: 55px; height: 55px;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            color: var(--black-primary);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 25px rgba(212, 175, 55, 0.5); }
+            50% { box-shadow: 0 0 45px rgba(212, 175, 55, 0.8); }
+        }
+
+        .brand-name {
+            font-size: 26px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--gold-bright), var(--gold-primary), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1px;
+        }
+
+        .brand-subtitle {
+            color: var(--gold-light);
+            font-size: 14px;
+            font-weight: 700;
+            margin-top: 3px;
+            opacity: 0.9;
+        }
+
+        .since-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.05));
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            color: var(--gold-primary);
+            padding: 4px 15px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-top: 8px;
+            letter-spacing: 2px;
+        }
+
+        /* ===== TICKER ===== */
+        .ticker-wrapper {
+            background: linear-gradient(90deg, #1a0a00, #0a0a0a, #1a0a00);
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 10px 0;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .ticker-track {
+            display: flex;
+            animation: ticker-scroll 25s linear infinite;
+            white-space: nowrap;
+        }
+
+        .ticker-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0 30px;
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--gold-bright);
+        }
+
+        .ticker-item i {
+            color: var(--gold-primary);
+            font-size: 14px;
+        }
+
+        .ticker-item .price {
+            color: var(--text-primary);
+            font-size: 18px;
+            direction: ltr;
+        }
+
+        .ticker-item .currency {
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        .ticker-separator {
+            color: rgba(212, 175, 55, 0.4);
+            font-size: 20px;
+            padding: 0 10px;
+        }
+
+        @keyframes ticker-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ===== KARAT BOXES ===== */
+        .karat-section {
+            padding: 15px 10px 5px;
+            flex-shrink: 0;
+        }
+
+        .karat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .karat-box {
+            background: linear-gradient(135deg, var(--black-card), var(--black-secondary));
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 16px;
+            padding: 15px 10px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .karat-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(90deg, var(--gold-primary), var(--gold-bright), var(--gold-primary));
+        }
+
+        .karat-box:hover {
+            border-color: var(--gold-primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.15);
+        }
+
+        .karat-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .karat-label i {
+            color: var(--gold-primary);
+            font-size: 12px;
+        }
+
+        .karat-price {
+            font-size: 22px;
+            font-weight: 900;
+            color: var(--gold-bright);
+            direction: ltr;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .karat-currency {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-right: 2px;
+        }
+
+        .karat-formula {
+            font-size: 10px;
+            color: rgba(176, 176, 176, 0.6);
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        /* ===== SECTIONS ===== */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding: 10px;
+            gap: 8px;
+            overflow-y: auto;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 5px 5px;
+            border-right: 3px solid var(--gold-primary);
+        }
+
+        .section-title h2 {
+            font-size: 17px;
+            font-weight: 800;
+            color: var(--gold-light);
+        }
+
+        .section-title i {
+            color: var(--gold-primary);
+            font-size: 15px;
+        }
+
+        /* ===== CARDS ===== */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .cards-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media (min-width: 1024px) {
+            .cards-grid { grid-template-columns: repeat(5, 1fr); }
+        }
+
+        @media (max-width: 480px) {
+            .cards-grid { grid-template-columns: 1fr; }
+            .karat-grid { grid-template-columns: 1fr; }
+        }
+
+        .gold-card {
+            background: linear-gradient(135deg, var(--black-card), var(--black-secondary));
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 14px;
+            padding: 12px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gold-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 2px;
+            background: linear-gradient(90deg, var(--gold-primary), var(--gold-bright), var(--gold-primary));
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .gold-card:hover::before { transform: scaleX(1); }
+        .gold-card:hover {
+            border-color: var(--gold-primary);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.15);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            gap: 5px;
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 0;
+        }
+
+        .gold-icon {
+            width: 36px; height: 36px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.05));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: var(--gold-primary);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            flex-shrink: 0;
+        }
+
+        .gold-type {
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .gold-purity {
+            font-size: 11px;
+            color: var(--gold-primary);
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        .weight-badge {
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--gold-primary);
+            padding: 3px 8px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 700;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            flex-shrink: 0;
+        }
+
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 6px 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .price-row.manufacturing {
+            background: rgba(0, 208, 132, 0.08);
+            border: 1px solid rgba(0, 208, 132, 0.15);
+        }
+
+        .price-row.total {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05));
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .price-label {
+            font-size: 11px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .price-value {
+            font-size: 15px;
+            font-weight: 900;
+            color: var(--gold-primary);
+            direction: ltr;
+        }
+
+        .price-row.manufacturing .price-value { color: var(--green-profit); font-size: 14px; }
+        .price-row.total .price-value { font-size: 17px; color: var(--gold-light); }
+        .price-currency { font-size: 11px; color: var(--text-secondary); margin-right: 2px; }
+
+        /* ===== CALCULATOR ===== */
+        .calculator-section {
+            background: linear-gradient(135deg, var(--black-card), var(--black-secondary));
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 14px;
+            padding: 15px;
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+
+        .calc-title {
+            text-align: center;
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--gold-light);
+            margin-bottom: 12px;
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .calc-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .calc-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .calc-input, .calc-select {
+            background: var(--black-primary);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 10px;
+            padding: 10px;
+            color: var(--text-primary);
+            font-family: 'Tajawal', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            outline: none;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .calc-input:focus, .calc-select:focus {
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+        }
+
+        .calc-result {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05));
+            border: 2px solid var(--gold-primary);
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .result-label { font-size: 12px; color: var(--text-secondary); margin-bottom: 5px; }
+        .result-value { font-size: 26px; font-weight: 900; color: var(--gold-primary); direction: ltr; }
+        .result-currency { font-size: 16px; color: var(--gold-light); }
+
+        /* ===== ACTIONS ===== */
+        .actions-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 10px;
+            flex-shrink: 0;
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            color: var(--black-primary);
+            border: none;
+            border-radius: 12px;
+            padding: 12px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 14px;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .action-btn.whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+        }
+
+        .action-btn.whatsapp:hover {
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .action-btn.secondary {
+            background: transparent;
+            border: 2px solid var(--gold-primary);
+            color: var(--gold-primary);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            padding: 15px 10px;
+            margin-top: 5px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            flex-shrink: 0;
+        }
+
+        .footer-text { color: var(--text-secondary); font-size: 12px; margin-bottom: 5px; }
+        .footer-brand { color: var(--gold-primary); font-weight: 800; font-size: 16px; }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .social-link {
+            width: 40px; height: 40px;
+            background: var(--black-card);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-primary);
+            font-size: 18px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--gold-primary);
+            color: var(--black-primary);
+            transform: translateY(-2px);
+        }
+
+        /* ===== ADMIN PANEL ===== */
+        .admin-panel {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.97);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 15px;
+        }
+
+        .admin-panel.active { display: block; }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--gold-primary);
+        }
+
+        .admin-title {
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold-primary);
+        }
+
+        .close-admin {
+            background: none;
+            border: 2px solid var(--gold-primary);
+            color: var(--gold-primary);
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .admin-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .admin-item {
+            background: var(--black-card);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 15px;
+        }
+
+        .admin-item-label {
+            font-size: 13px;
+            color: var(--gold-primary);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .admin-input {
+            width: 100%;
+            background: var(--black-primary);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 10px;
+            color: var(--text-primary);
+            font-family: 'Tajawal', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            outline: none;
+        }
+
+        .save-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            color: var(--black-primary);
+            border: none;
+            border-radius: 12px;
+            padding: 15px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 16px;
+            font-weight: 900;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .price-updated {
+            animation: priceFlash 0.6s ease;
+        }
+
+        @keyframes priceFlash {
+            0% { color: var(--green-profit); transform: scale(1.2); }
+            100% { color: var(--gold-primary); transform: scale(1); }
+        }
+
+        .admin-trigger {
+            position: fixed;
+            bottom: 5px; left: 5px;
+            width: 25px; height: 25px;
+            opacity: 0.05;
+            cursor: pointer;
+            z-index: 999;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--black-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <div class="app-wrapper">
+        <!-- HEADER -->
+        <header class="header">
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <div>
+                    <div class="brand-name">مجوهرات المدينة</div>
+                    <div class="brand-subtitle">حسام نصار</div>
+                    <div class="since-badge">✦ منذ 1999 ✦</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- TICKER -->
+        <div class="ticker-wrapper">
+            <div class="ticker-track" id="tickerTrack">
+                <!-- Content injected by JS -->
+            </div>
+        </div>
+
+        <!-- KARAT BOXES -->
+        <div class="karat-section">
+            <div class="karat-grid">
+                <div class="karat-box">
+                    <div class="karat-label"><i class="fas fa-certificate"></i> عيار 21</div>
+                    <div class="karat-price">
+                        <span id="price21">7030</span><span class="karat-currency">ج/جرام</span>
+                    </div>
+                    <div class="karat-formula">السعر الأساسي</div>
+                </div>
+                <div class="karat-box">
+                    <div class="karat-label"><i class="fas fa-certificate"></i> عيار 24</div>
+                    <div class="karat-price">
+                        <span id="price24">8034</span><span class="karat-currency">ج/جرام</span>
+                    </div>
+                    <div class="karat-formula">21 × 8 ÷ 7</div>
+                </div>
+                <div class="karat-box">
+                    <div class="karat-label"><i class="fas fa-certificate"></i> عيار 18</div>
+                    <div class="karat-price">
+                        <span id="price18">6026</span><span class="karat-currency">ج/جرام</span>
+                    </div>
+                    <div class="karat-formula">21 × 6 ÷ 7</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            <div class="section-title">
+                <i class="fas fa-coins"></i>
+                <h2>أسعار الجنيهات الذهب</h2>
+            </div>
+            <div class="cards-grid" id="gramsContainer"></div>
+
+            <div class="section-title">
+                <i class="fas fa-bars"></i>
+                <h2>أسعار السبائك الذهبية</h2>
+            </div>
+            <div class="cards-grid" id="barsContainer"></div>
+
+            <!-- CALCULATOR -->
+            <div class="calculator-section">
+                <div class="calc-title"><i class="fas fa-calculator"></i> حاسبة الذهب الذكية</div>
+                <div class="calc-grid">
+                    <div class="calc-group">
+                        <label class="calc-label">نوع الذهب</label>
+                        <select class="calc-select" id="calcType"></select>
+                    </div>
+                    <div class="calc-group">
+                        <label class="calc-label">الكمية</label>
+                        <input type="number" class="calc-input" id="calcQty" value="1" min="1">
+                    </div>
+                </div>
+                <div class="calc-result">
+                    <div class="result-label">الإجمالي المستحق</div>
+                    <div class="result-value"><span id="calcResult">0</span><span class="result-currency">جنيه</span></div>
+                </div>
+            </div>
+
+            <!-- ACTIONS -->
+            <div class="actions-grid">
+                <button class="action-btn whatsapp" onclick="shareWhatsApp()">
+                    <i class="fab fa-whatsapp"></i> قناة الواتساب
+                </button>
+                <button class="action-btn secondary" onclick="window.print()">
+                    <i class="fas fa-print"></i> طباعة
+                </button>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-text">جميع الأسعار بالجنيه المصري وتشمل ضريبة القيمة المضافة</div>
+            <div class="footer-brand">مجوهرات المدينة - حسام نصار</div>
+            <div class="social-links">
+                <a href="https://wa.me/" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                <a href="tel:" class="social-link"><i class="fas fa-phone"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ADMIN PANEL -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-header">
+            <div class="admin-title">⚙️ لوحة تحديث الأسعار</div>
+            <button class="close-admin" onclick="toggleAdmin()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="admin-grid" id="adminGrid"></div>
+        <div style="max-width:600px;margin:0 auto;">
+            <button class="save-btn" onclick="savePrices()"><i class="fas fa-save"></i> حفظ وتحديث الأسعار</button>
+        </div>
+    </div>
+
+    <div class="admin-trigger" onclick="toggleAdmin()"></div>
+
+    <script>
+        // ===== DATA =====
+        let basePrice21 = 7030;
+
+        function getPrice24() { return Math.round(basePrice21 * 8 / 7); }
+        function getPrice18() { return Math.round(basePrice21 * 6 / 7); }
+
+        let goldData = {
+            grams: [
+                { id: 'g1', name: 'جرام 1', weight: 1, manufacturing: 130, cashBack: 10 },
+                { id: 'g2', name: 'جرام 2', weight: 2, manufacturing: 75, cashBack: 10 },
+                { id: 'g4', name: 'جرام 4', weight: 4, manufacturing: 70, cashBack: 10 },
+                { id: 'g8_coin', name: 'جنيه 8 جرام', weight: 8, manufacturing: 65, cashBack: 10 },
+                { id: 'g8_islamic', name: '8 جرام إسلامي', weight: 8, manufacturing: 70, cashBack: 25 }
+            ],
+            bars: [
+                { id: 'b40', name: '5 جنيه 40 جرام', weight: 40, manufacturing: 50, cashBack: 10 },
+                { id: 'b50', name: 'سبيكة 50 جرام', weight: 50, manufacturing: 55, cashBack: 10 },
+                { id: 'b100', name: 'سبيكة 100 جرام', weight: 100, manufacturing: 52, cashBack: 10 },
+                { id: 'b250', name: 'سبيكة 250 جرام', weight: 250, manufacturing: 29, cashBack: 10 },
+                { id: 'b05', name: 'نصف سبيكة', weight: 0.5, manufacturing: 150, cashBack: 10 }
+            ]
+        };
+
+        // ===== RENDER TICKER =====
+        function renderTicker() {
+            const p21 = basePrice21.toLocaleString();
+            const p24 = getPrice24().toLocaleString();
+            const p18 = getPrice18().toLocaleString();
+
+            const content = `
+                <div class="ticker-item"><i class="fas fa-certificate"></i> عيار 21: <span class="price">${p21}</span> <span class="currency">ج/جرام</span></div>
+                <div class="ticker-separator">✦</div>
+                <div class="ticker-item"><i class="fas fa-certificate"></i> عيار 24: <span class="price">${p24}</span> <span class="currency">ج/جرام</span></div>
+                <div class="ticker-separator">✦</div>
+                <div class="ticker-item"><i class="fas fa-certificate"></i> عيار 18: <span class="price">${p18}</span> <span class="currency">ج/جرام</span></div>
+                <div class="ticker-separator">✦</div>
+                <div class="ticker-item"><i class="fas fa-coins"></i> سعر الأونصة العالمي: <span class="price">--</span> <span class="currency">$</span></div>
+                <div class="ticker-separator">✦</div>
+            `;
+            // Duplicate for seamless loop
+            document.getElementById('tickerTrack').innerHTML = content + content + content;
+        }
+
+        // ===== RENDER KARAT BOXES =====
+        function renderKaratBoxes() {
+            document.getElementById('price21').textContent = basePrice21.toLocaleString();
+            document.getElementById('price24').textContent = getPrice24().toLocaleString();
+            document.getElementById('price18').textContent = getPrice18().toLocaleString();
+        }
+
+        // ===== RENDER CARDS =====
+        const gramsContainer = document.getElementById('gramsContainer');
+        const barsContainer = document.getElementById('barsContainer');
+
+        function renderCards() {
+            gramsContainer.innerHTML = goldData.grams.map(item => createCard(item)).join('');
+            barsContainer.innerHTML = goldData.bars.map(item => createCard(item)).join('');
+        }
+
+        function createCard(item) {
+            const totalGramPrice = basePrice21 * item.weight;
+            const totalManufacturing = item.manufacturing * item.weight;
+            const finalPrice = totalGramPrice + totalManufacturing;
+            const cashBackTotal = item.cashBack * item.weight;
+            const netPrice = finalPrice - cashBackTotal;
+
+            return `
+                <div class="gold-card" data-id="${item.id}">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <div class="gold-icon"><i class="fas fa-coins"></i></div>
+                            <div>
+                                <div class="gold-type">${item.name}</div>
+                                <div class="gold-purity">عيار 21 - مصنعية ${item.manufacturing} ج/جرام</div>
+                            </div>
+                        </div>
+                        <div class="weight-badge">${item.weight} جرام</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="price-row">
+                            <div class="price-label"><i class="fas fa-tag" style="font-size:10px;"></i> سعر الجرام</div>
+                            <div class="price-value">${basePrice21.toLocaleString()}<span class="price-currency">ج</span></div>
+                        </div>
+                        <div class="price-row manufacturing">
+                            <div class="price-label"><i class="fas fa-industry" style="font-size:10px;"></i> المصنعية</div>
+                            <div class="price-value">${totalManufacturing.toLocaleString()}<span class="price-currency">ج</span></div>
+                        </div>
+                        <div class="price-row total">
+                            <div class="price-label"><i class="fas fa-money-bill-wave" style="font-size:10px;"></i> الإجمالي</div>
+                            <div class="price-value">${netPrice.toLocaleString()}<span class="price-currency">ج</span></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ===== CALCULATOR =====
+        const calcType = document.getElementById('calcType');
+        const calcQty = document.getElementById('calcQty');
+        const calcResult = document.getElementById('calcResult');
+
+        function calculate() {
+            const selectedId = calcType.value;
+            const qty = parseInt(calcQty.value) || 1;
+
+            let item = goldData.grams.find(g => g.id === selectedId);
+            if (!item) item = goldData.bars.find(b => b.id === selectedId);
+            if (!item) return;
+
+            const totalGramPrice = basePrice21 * item.weight * qty;
+            const totalManufacturing = item.manufacturing * item.weight * qty;
+            const finalPrice = totalGramPrice + totalManufacturing;
+            const cashBackTotal = item.cashBack * item.weight * qty;
+            const netPrice = finalPrice - cashBackTotal;
+
+            calcResult.textContent = netPrice.toLocaleString();
+            calcResult.classList.remove('price-updated');
+            void calcResult.offsetWidth;
+            calcResult.classList.add('price-updated');
+        }
+
+        function populateCalcOptions() {
+            calcType.innerHTML = '';
+            [...goldData.grams, ...goldData.bars].forEach(item => {
+                const option = document.createElement('option');
+                option.value = item.id;
+                option.textContent = item.name;
+                calcType.appendChild(option);
+            });
+        }
+
+        // ===== ADMIN PANEL =====
+        const adminGrid = document.getElementById('adminGrid');
+
+        function renderAdmin() {
+            adminGrid.innerHTML = '';
+
+            // Base price
+            const priceItem = document.createElement('div');
+            priceItem.className = 'admin-item';
+            priceItem.innerHTML = `
+                <div class="admin-item-label">سعر جرام الذهب عيار 21 (السعر الأساسي)</div>
+                <input type="number" class="admin-input" id="adminBasePrice" value="${basePrice21}">
+                <div style="color:#666;font-size:11px;margin-top:5px;">عيار 24 = 21 × 8 ÷ 7 | عيار 18 = 21 × 6 ÷ 7</div>
+            `;
+            adminGrid.appendChild(priceItem);
+
+            // Manufacturing fees
+            [...goldData.grams, ...goldData.bars].forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'admin-item';
+                div.innerHTML = `
+                    <div class="admin-item-label">${item.name} - المصنعية (ج/جرام)</div>
+                    <input type="number" class="admin-input" id="admin_${item.id}" value="${item.manufacturing}">
+                `;
+                adminGrid.appendChild(div);
+            });
+        }
+
+        function toggleAdmin() {
+            document.getElementById('adminPanel').classList.toggle('active');
+        }
+
+        function savePrices() {
+            const newPrice = parseInt(document.getElementById('adminBasePrice').value) || 7030;
+            basePrice21 = newPrice;
+
+            [...goldData.grams, ...goldData.bars].forEach(item => {
+                const input = document.getElementById(`admin_${item.id}`);
+                if (input) item.manufacturing = parseInt(input.value) || item.manufacturing;
+            });
+
+            renderTicker();
+            renderKaratBoxes();
+            renderCards();
+            calculate();
+            updateTimestamp();
+            toggleAdmin();
+        }
+
+        function updateTimestamp() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' });
+            const dateString = now.toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' });
+            // You can display this somewhere if needed
+        }
+
+        // ===== WHATSAPP SHARE =====
+        function shareWhatsApp() {
+            let text = `*مجوهرات المدينة - حسام نصار* 🏆\n`;
+            text += `منذ 1999 - تاجر ذهب معتمد\n`;
+            text += `━━━━━━━━━━━━━━━\n`;
+            text += `*أسعار الذهب اليوم:*\n`;
+            text += `• عيار 21: ${basePrice21.toLocaleString()} ج/جرام\n`;
+            text += `• عيار 24: ${getPrice24().toLocaleString()} ج/جرام\n`;
+            text += `• عيار 18: ${getPrice18().toLocaleString()} ج/جرام\n\n`;
+
+            text += `*الجنيهات:*\n`;
+            goldData.grams.forEach(item => {
+                const total = (basePrice21 * item.weight) + (item.manufacturing * item.weight) - (item.cashBack * item.weight);
+                text += `• ${item.name}: ${total.toLocaleString()} ج\n`;
+            });
+
+            text += `\n*السبائك:*\n`;
+            goldData.bars.forEach(item => {
+                const total = (basePrice21 * item.weight) + (item.manufacturing * item.weight) - (item.cashBack * item.weight);
+                text += `• ${item.name}: ${total.toLocaleString()} ج\n`;
+            });
+
+            text += `\n📞 للطلب والاستفسار\n`;
+            text += `✦ مجوهرات المدينة - حسام نصار ✦`;
+
+            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // ===== EVENTS =====
+        calcType.addEventListener('change', calculate);
+        calcQty.addEventListener('input', calculate);
+
+        // ===== INIT =====
+        renderTicker();
+        renderKaratBoxes();
+        renderCards();
+        populateCalcOptions();
+        renderAdmin();
+        updateTimestamp();
+        calculate();
+    </script>
+</body>
+</html>
