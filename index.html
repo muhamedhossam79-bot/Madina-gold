@@ -260,23 +260,97 @@
             overflow-y: auto;
         }
 
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 5px 5px;
-            border-right: 3px solid var(--gold-primary);
+        /* ===== ACCORDION ===== */
+        .accordion {
+            margin-bottom: 10px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.2);
         }
 
-        .section-title h2 {
-            font-size: 17px;
+        .accordion-header {
+            background: linear-gradient(135deg, var(--black-card), var(--black-secondary));
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .accordion-header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(90deg, var(--gold-primary), var(--gold-bright), var(--gold-primary));
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-header:hover::before,
+        .accordion-header.active::before {
+            transform: scaleX(1);
+        }
+
+        .accordion-header:hover,
+        .accordion-header.active {
+            border-color: var(--gold-primary);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), var(--black-secondary));
+        }
+
+        .accordion-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .accordion-title i {
+            font-size: 22px;
+            color: var(--gold-primary);
+        }
+
+        .accordion-title h2 {
+            font-size: 18px;
             font-weight: 800;
             color: var(--gold-light);
         }
 
-        .section-title i {
+        .accordion-title .count-badge {
+            background: rgba(212, 175, 55, 0.2);
             color: var(--gold-primary);
-            font-size: 15px;
+            padding: 2px 10px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-right: 8px;
+        }
+
+        .accordion-icon {
+            font-size: 20px;
+            color: var(--gold-primary);
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-header.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.3s ease;
+            background: var(--black-primary);
+        }
+
+        .accordion-body.active {
+            max-height: 5000px;
+            padding: 10px;
         }
 
         .cards-grid {
@@ -425,73 +499,185 @@
         .price-row.total .price-value { font-size: 17px; color: var(--gold-light); }
         .price-currency { font-size: 11px; color: var(--text-secondary); margin-right: 2px; }
 
-        .calculator-section {
+        /* ===== ZAKAT CALCULATOR ===== */
+        .zakat-section {
             background: linear-gradient(135deg, var(--black-card), var(--black-secondary));
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 14px;
-            padding: 15px;
-            margin-top: 5px;
-            flex-shrink: 0;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .calc-title {
+        .zakat-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(90deg, var(--gold-primary), var(--gold-bright), var(--gold-primary));
+        }
+
+        .zakat-title {
             text-align: center;
-            font-size: 16px;
-            font-weight: 800;
+            font-size: 18px;
+            font-weight: 900;
             color: var(--gold-light);
-            margin-bottom: 12px;
-        }
-
-        .calc-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             gap: 10px;
-            margin-bottom: 12px;
         }
 
-        .calc-group {
+        .zakat-formula {
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            background: rgba(212, 175, 55, 0.1);
+            padding: 8px;
+            border-radius: 8px;
+        }
+
+        .zakat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .zakat-group {
             display: flex;
             flex-direction: column;
             gap: 5px;
         }
 
-        .calc-label {
+        .zakat-label {
             font-size: 12px;
             color: var(--text-secondary);
             font-weight: 600;
         }
 
-        .calc-input, .calc-select {
+        .zakat-input {
             background: var(--black-primary);
             border: 1px solid rgba(212, 175, 55, 0.3);
             border-radius: 10px;
-            padding: 10px;
+            padding: 12px;
             color: var(--text-primary);
             font-family: 'Tajawal', sans-serif;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 700;
             outline: none;
             transition: all 0.3s ease;
             width: 100%;
         }
 
-        .calc-input:focus, .calc-select:focus {
+        .zakat-input:focus {
             border-color: var(--gold-primary);
             box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
         }
 
-        .calc-result {
+        .zakat-result {
             background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05));
             border: 2px solid var(--gold-primary);
             border-radius: 12px;
-            padding: 12px;
+            padding: 15px;
             text-align: center;
         }
 
-        .result-label { font-size: 12px; color: var(--text-secondary); margin-bottom: 5px; }
-        .result-value { font-size: 26px; font-weight: 900; color: var(--gold-primary); direction: ltr; }
-        .result-currency { font-size: 16px; color: var(--gold-light); }
+        .zakat-result-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
 
+        .zakat-result-value {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--gold-primary);
+            direction: ltr;
+        }
+
+        .zakat-result-currency {
+            font-size: 16px;
+            color: var(--gold-light);
+        }
+
+        .zakat-note {
+            text-align: center;
+            font-size: 11px;
+            color: rgba(176, 176, 176, 0.6);
+            margin-top: 10px;
+        }
+
+        /* ===== SOCIAL LINKS ===== */
+        .social-section {
+            text-align: center;
+            padding: 20px 10px;
+            margin-top: 10px;
+        }
+
+        .social-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--gold-light);
+            margin-bottom: 15px;
+        }
+
+        .social-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .social-btn:hover::before { opacity: 1; }
+        .social-btn:hover { transform: translateY(-5px) scale(1.1); }
+
+        .social-btn.facebook { background: linear-gradient(135deg, #1877F2, #0d5cb5); box-shadow: 0 5px 20px rgba(24, 119, 242, 0.3); }
+        .social-btn.instagram { background: linear-gradient(135deg, #E4405F, #C13584, #833AB4); box-shadow: 0 5px 20px rgba(228, 64, 95, 0.3); }
+        .social-btn.whatsapp { background: linear-gradient(135deg, #25D366, #128C7E); box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3); }
+        .social-btn.tiktok { background: linear-gradient(135deg, #000000, #333333); box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3); border: 1px solid rgba(255,255,255,0.1); }
+
+        .social-btn span {
+            position: absolute;
+            bottom: -20px;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--text-secondary);
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        .social-btn:hover span { opacity: 1; bottom: -25px; }
+
+        /* ===== ACTIONS ===== */
         .actions-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -523,21 +709,13 @@
             box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
         }
 
-        .action-btn.whatsapp {
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-        }
-
-        .action-btn.whatsapp:hover {
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
-        }
-
         .action-btn.secondary {
             background: transparent;
             border: 2px solid var(--gold-primary);
             color: var(--gold-primary);
         }
 
+        /* ===== FOOTER ===== */
         .footer {
             text-align: center;
             padding: 15px 10px;
@@ -549,33 +727,7 @@
         .footer-text { color: var(--text-secondary); font-size: 12px; margin-bottom: 5px; }
         .footer-brand { color: var(--gold-primary); font-weight: 800; font-size: 16px; }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 10px;
-        }
-
-        .social-link {
-            width: 40px; height: 40px;
-            background: var(--black-card);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gold-primary);
-            font-size: 18px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            background: var(--gold-primary);
-            color: var(--black-primary);
-            transform: translateY(-2px);
-        }
-
+        /* ===== ADMIN PANEL ===== */
         .admin-panel {
             display: none;
             position: fixed;
@@ -688,6 +840,7 @@
         ::-webkit-scrollbar-track { background: var(--black-primary); }
         ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
     </style>
+<base target="_blank">
 </head>
 <body>
     <div class="app-wrapper">
@@ -710,67 +863,118 @@
             <div class="karat-grid">
                 <div class="karat-box">
                     <div class="karat-label"><i class="fas fa-certificate"></i> عيار 21</div>
-                    <div class="karat-price"><span id="price21">7030</span><span class="karat-currency">ج/جرام</span></div>
+                    <div class="karat-price"><span id="price21">6800</span><span class="karat-currency">ج/جرام</span></div>
                     <div class="karat-purity">نقاء 87.5%</div>
                 </div>
                 <div class="karat-box">
                     <div class="karat-label"><i class="fas fa-certificate"></i> عيار 24</div>
-                    <div class="karat-price"><span id="price24">8034</span><span class="karat-currency">ج/جرام</span></div>
+                    <div class="karat-price"><span id="price24">7771</span><span class="karat-currency">ج/جرام</span></div>
                     <div class="karat-purity">نقاء 99.9%</div>
                 </div>
                 <div class="karat-box">
                     <div class="karat-label"><i class="fas fa-certificate"></i> عيار 18</div>
-                    <div class="karat-price"><span id="price18">6026</span><span class="karat-currency">ج/جرام</span></div>
+                    <div class="karat-price"><span id="price18">5829</span><span class="karat-currency">ج/جرام</span></div>
                     <div class="karat-purity">نقاء 75%</div>
                 </div>
             </div>
         </div>
 
         <div class="main-content">
-            <div class="section-title">
-                <i class="fas fa-coins"></i>
-                <h2>أسعار سبائك الذهب عيار 21</h2>
-            </div>
-            <div class="cards-grid" id="gramsContainer"></div>
-
-            <div class="section-title">
-                <i class="fas fa-bars"></i>
-                <h2>أسعار السبائك الذهبية</h2>
-            </div>
-            <div class="cards-grid" id="barsContainer"></div>
-
-            <div class="calculator-section">
-                <div class="calc-title"><i class="fas fa-calculator"></i> حاسبة الذهب الذكية</div>
-                <div class="calc-grid">
-                    <div class="calc-group">
-                        <label class="calc-label">نوع الذهب</label>
-                        <select class="calc-select" id="calcType"></select>
+            <!-- سبائك عيار 24 - Accordion -->
+            <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title">
+                        <i class="fas fa-certificate"></i>
+                        <h2>سبائك الذهب عيار 24 <span class="count-badge">13 منتج</span></h2>
                     </div>
-                    <div class="calc-group">
-                        <label class="calc-label">الكمية</label>
-                        <input type="number" class="calc-input" id="calcQty" value="1" min="1">
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="accordion-body">
+                    <div class="cards-grid" id="bars24Container"></div>
+                </div>
+            </div>
+
+            <!-- سبائك عيار 21 - Accordion -->
+            <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title">
+                        <i class="fas fa-coins"></i>
+                        <h2>سبائك الذهب عيار 21 <span class="count-badge">10 منتجات</span></h2>
+                    </div>
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="accordion-body">
+                    <div class="cards-grid" id="bars21Container"></div>
+                </div>
+            </div>
+
+            <!-- حساب زكاة المال -->
+            <div class="zakat-section">
+                <div class="zakat-title">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    حساب زكاة المال
+                </div>
+                <div class="zakat-formula">
+                    المعادلة: (الوزن × سعر جرام عيار 21) ÷ 40 = قيمة الزكاة
+                </div>
+                <div class="zakat-grid">
+                    <div class="zakat-group">
+                        <label class="zakat-label">وزن الذهب (جرام)</label>
+                        <input type="number" class="zakat-input" id="zakatWeight" placeholder="مثال: 100" min="0" step="0.01">
+                    </div>
+                    <div class="zakat-group">
+                        <label class="zakat-label">سعر الجرام عيار 21</label>
+                        <input type="number" class="zakat-input" id="zakatPrice" value="6800" readonly>
                     </div>
                 </div>
-                <div class="calc-result">
-                    <div class="result-label">الإجمالي المستحق</div>
-                    <div class="result-value"><span id="calcResult">0</span><span class="result-currency">جنيه</span></div>
+                <div class="zakat-result">
+                    <div class="zakat-result-label">قيمة الزكاة الواجبة</div>
+                    <div class="zakat-result-value">
+                        <span id="zakatResult">0</span>
+                        <span class="zakat-result-currency">جنيه مصري</span>
+                    </div>
+                </div>
+                <div class="zakat-note">
+                    * الزكاة واجبة عند بلوغ النصاب (85 جرام ذهب عيار 21)
+                </div>
+            </div>
+
+            <!-- Social Media -->
+            <div class="social-section">
+                <div class="social-title">تابعنا على وسائل التواصل</div>
+                <div class="social-grid">
+                    <a href="https://www.facebook.com/share/1BejpavWfe/" class="social-btn facebook" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                        <span>Facebook</span>
+                    </a>
+                    <a href="https://www.instagram.com/madina_gold_eg?igsh=MXFuZG02bzNqdXdn" class="social-btn instagram" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://wa.me/" class="social-btn whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>WhatsApp</span>
+                    </a>
+                    <a href="https://www.tiktok.com/@mgold200?_r=1&_t=ZS-96mLkwqOL1s" class="social-btn tiktok" target="_blank">
+                        <i class="fab fa-tiktok"></i>
+                        <span>TikTok</span>
+                    </a>
                 </div>
             </div>
 
             <div class="actions-grid">
-                <button class="action-btn whatsapp" onclick="shareWhatsApp()"><i class="fab fa-whatsapp"></i> قناة الواتساب</button>
-                <button class="action-btn secondary" onclick="window.print()"><i class="fas fa-print"></i> طباعة</button>
+                <button class="action-btn" onclick="shareWhatsApp()">
+                    <i class="fab fa-whatsapp"></i> مشاركة الأسعار
+                </button>
+                <button class="action-btn secondary" onclick="window.print()">
+                    <i class="fas fa-print"></i> طباعة
+                </button>
             </div>
         </div>
 
         <footer class="footer">
             <div class="footer-text">جميع الأسعار بالجنيه المصري وتشمل ضريبة القيمة المضافة</div>
             <div class="footer-brand">مجوهرات المدينة - حسام نصار</div>
-            <div class="social-links">
-                <a href="https://wa.me/" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-                <a href="tel:" class="social-link"><i class="fas fa-phone"></i></a>
-            </div>
         </footer>
     </div>
 
@@ -788,31 +992,54 @@
     <div class="admin-trigger" onclick="toggleAdmin()"></div>
 
     <script>
-        let basePrice21 = 7030;
+        // ===== ACCORDION FUNCTION =====
+        function toggleAccordion(header) {
+            header.classList.toggle('active');
+            const body = header.nextElementSibling;
+            body.classList.toggle('active');
+        }
 
-        function getPrice24() { return Math.round(basePrice21 * 8 / 7); }
+        // ===== DATA =====
+        let basePrice21 = 6800;
+        let basePrice24 = 7771;
+
         function getPrice18() { return Math.round(basePrice21 * 6 / 7); }
 
-        let goldData = {
-            grams: [
-                { id: 'g1', name: 'جرام 1', weight: 1, manufacturing: 130, cashBack: 10 },
-                { id: 'g2', name: 'جرام 2', weight: 2, manufacturing: 75, cashBack: 10 },
-                { id: 'g4', name: 'جرام 4', weight: 4, manufacturing: 70, cashBack: 10 },
-                { id: 'g8_coin', name: 'جنيه 8 جرام', weight: 8, manufacturing: 65, cashBack: 10 },
-                { id: 'g8_islamic', name: '8 جرام إسلامي', weight: 8, manufacturing: 70, cashBack: 25 }
-            ],
-            bars: [
-                { id: 'b40', name: '5 جنيه 40 جرام', weight: 40, manufacturing: 50, cashBack: 10 },
-                { id: 'b50', name: 'سبيكة 50 جرام', weight: 50, manufacturing: 55, cashBack: 10 },
-                { id: 'b100', name: 'سبيكة 100 جرام', weight: 100, manufacturing: 52, cashBack: 10 },
-                { id: 'b250', name: 'سبيكة 250 جرام', weight: 250, manufacturing: 29, cashBack: 10 },
-                { id: 'b05', name: 'نصف سبيكة', weight: 0.5, manufacturing: 150, cashBack: 10 }
-            ]
-        };
+        // سبائك عيار 24
+        let bars24Data = [
+            { id: 'b24_1', name: '1 جرام', weight: 1, manufacturing: 130, cashBack: 25 },
+            { id: 'b24_2.5', name: '2.50 جرام', weight: 2.5, manufacturing: 110, cashBack: 25 },
+            { id: 'b24_5', name: '5 جرام', weight: 5, manufacturing: 75, cashBack: 14 },
+            { id: 'b24_10', name: '10 جرام', weight: 10, manufacturing: 70, cashBack: 14 },
+            { id: 'b24_20', name: '20 جرام', weight: 20, manufacturing: 67, cashBack: 14 },
+            { id: 'b24_31.1', name: '31.1 جرام', weight: 31.1, manufacturing: 64, cashBack: 14 },
+            { id: 'b24_50', name: '50 جرام', weight: 50, manufacturing: 64, cashBack: 14 },
+            { id: 'b24_100', name: '100 جرام', weight: 100, manufacturing: 60, cashBack: 14 },
+            { id: 'b24_116.65', name: '116.65 جرام', weight: 116.65, manufacturing: 55, cashBack: 14 },
+            { id: 'b24_250', name: '250 جرام', weight: 250, manufacturing: 33, cashBack: 14 },
+            { id: 'b24_250_995', name: '250 جرام 995', weight: 250, manufacturing: 32, cashBack: 14 },
+            { id: 'b24_500_995', name: '500 جرام 995', weight: 500, manufacturing: 30, cashBack: 14 },
+            { id: 'b24_8coin', name: 'جنيه 8 جرام', weight: 8, manufacturing: 80, cashBack: 50 }
+        ];
 
+        // سبائك عيار 21
+        let bars21Data = [
+            { id: 'b21_1', name: '1 جرام', weight: 1, manufacturing: 130, cashBack: 10 },
+            { id: 'b21_2', name: '2 جرام', weight: 2, manufacturing: 75, cashBack: 10 },
+            { id: 'b21_4', name: '4 جرام', weight: 4, manufacturing: 70, cashBack: 10 },
+            { id: 'b21_8coin', name: 'جنيه 8 جرام', weight: 8, manufacturing: 65, cashBack: 10 },
+            { id: 'b21_8islamic', name: '8 جرام إسلامي', weight: 8, manufacturing: 70, cashBack: 25 },
+            { id: 'b21_40', name: '5 جنيه 40 جرام', weight: 40, manufacturing: 50, cashBack: 10 },
+            { id: 'b21_50', name: 'سبيكة 50 جرام', weight: 50, manufacturing: 55, cashBack: 10 },
+            { id: 'b21_100', name: 'سبيكة 100 جرام', weight: 100, manufacturing: 52, cashBack: 10 },
+            { id: 'b21_250', name: 'سبيكة 250 جرام', weight: 250, manufacturing: 29, cashBack: 10 },
+            { id: 'b21_05', name: 'نصف سبيكة', weight: 0.5, manufacturing: 150, cashBack: 10 }
+        ];
+
+        // ===== RENDER TICKER =====
         function renderTicker() {
             const p21 = basePrice21.toLocaleString();
-            const p24 = getPrice24().toLocaleString();
+            const p24 = basePrice24.toLocaleString();
             const p18 = getPrice18().toLocaleString();
             const content = `
                 <div class="ticker-item"><i class="fas fa-certificate"></i> عيار 21: <span class="price">${p21}</span> <span class="currency">ج/جرام</span></div>
@@ -827,22 +1054,25 @@
             document.getElementById('tickerTrack').innerHTML = content + content + content;
         }
 
+        // ===== RENDER KARAT BOXES =====
         function renderKaratBoxes() {
             document.getElementById('price21').textContent = basePrice21.toLocaleString();
-            document.getElementById('price24').textContent = getPrice24().toLocaleString();
+            document.getElementById('price24').textContent = basePrice24.toLocaleString();
             document.getElementById('price18').textContent = getPrice18().toLocaleString();
         }
 
-        const gramsContainer = document.getElementById('gramsContainer');
-        const barsContainer = document.getElementById('barsContainer');
+        // ===== RENDER CARDS =====
+        const bars24Container = document.getElementById('bars24Container');
+        const bars21Container = document.getElementById('bars21Container');
 
         function renderCards() {
-            gramsContainer.innerHTML = goldData.grams.map(item => createCard(item)).join('');
-            barsContainer.innerHTML = goldData.bars.map(item => createCard(item)).join('');
+            bars24Container.innerHTML = bars24Data.map(item => createCard(item, 24)).join('');
+            bars21Container.innerHTML = bars21Data.map(item => createCard(item, 21)).join('');
         }
 
-        function createCard(item) {
-            const totalGramPrice = basePrice21 * item.weight;
+        function createCard(item, karat) {
+            const basePrice = karat === 24 ? basePrice24 : basePrice21;
+            const totalGramPrice = basePrice * item.weight;
             const totalManufacturing = item.manufacturing * item.weight;
             const finalPrice = totalGramPrice + totalManufacturing;
             const cashBackTotal = item.cashBack * item.weight;
@@ -855,7 +1085,7 @@
                             <div class="gold-icon"><i class="fas fa-coins"></i></div>
                             <div>
                                 <div class="gold-type">${item.name}</div>
-                                <div class="gold-purity">عيار 21 - ${item.weight} جرام</div>
+                                <div class="gold-purity">عيار ${karat} - ${item.weight} جرام</div>
                             </div>
                         </div>
                         <div class="weight-badge">${item.manufacturing} ج/جرام</div>
@@ -863,7 +1093,7 @@
                     <div class="card-body">
                         <div class="price-row">
                             <div class="price-label"><i class="fas fa-tag" style="font-size:10px;"></i> سعر الجرام</div>
-                            <div class="price-value">${basePrice21.toLocaleString()}<span class="price-currency">ج</span></div>
+                            <div class="price-value">${basePrice.toLocaleString()}<span class="price-currency">ج</span></div>
                         </div>
                         <div class="price-row manufacturing">
                             <div class="price-label"><i class="fas fa-industry" style="font-size:10px;"></i> المصنعية</div>
@@ -871,58 +1101,56 @@
                         </div>
                         <div class="price-row total">
                             <div class="price-label"><i class="fas fa-money-bill-wave" style="font-size:10px;"></i> الإجمالي</div>
-                            <div class="price-value">${netPrice.toLocaleString()}<span class="price-currency">ج</span></div>
+                            <div class="price-value">${Math.round(netPrice).toLocaleString()}<span class="price-currency">ج</span></div>
                         </div>
                     </div>
                 </div>
             `;
         }
 
-        const calcType = document.getElementById('calcType');
-        const calcQty = document.getElementById('calcQty');
-        const calcResult = document.getElementById('calcResult');
+        // ===== ZAKAT CALCULATOR =====
+        const zakatWeight = document.getElementById('zakatWeight');
+        const zakatPrice = document.getElementById('zakatPrice');
+        const zakatResult = document.getElementById('zakatResult');
 
-        function calculate() {
-            const selectedId = calcType.value;
-            const qty = parseInt(calcQty.value) || 1;
-            let item = goldData.grams.find(g => g.id === selectedId);
-            if (!item) item = goldData.bars.find(b => b.id === selectedId);
-            if (!item) return;
-            const totalGramPrice = basePrice21 * item.weight * qty;
-            const totalManufacturing = item.manufacturing * item.weight * qty;
-            const finalPrice = totalGramPrice + totalManufacturing;
-            const cashBackTotal = item.cashBack * item.weight * qty;
-            const netPrice = finalPrice - cashBackTotal;
-            calcResult.textContent = netPrice.toLocaleString();
-            calcResult.classList.remove('price-updated');
-            void calcResult.offsetWidth;
-            calcResult.classList.add('price-updated');
+        function calculateZakat() {
+            const weight = parseFloat(zakatWeight.value) || 0;
+            const price = basePrice21;
+            const totalValue = weight * price;
+            const zakat = totalValue / 40;
+
+            zakatResult.textContent = Math.round(zakat).toLocaleString();
+            zakatResult.classList.remove('price-updated');
+            void zakatResult.offsetWidth;
+            zakatResult.classList.add('price-updated');
         }
 
-        function populateCalcOptions() {
-            calcType.innerHTML = '';
-            [...goldData.grams, ...goldData.bars].forEach(item => {
-                const option = document.createElement('option');
-                option.value = item.id;
-                option.textContent = item.name;
-                calcType.appendChild(option);
-            });
-        }
+        zakatWeight.addEventListener('input', calculateZakat);
 
+        // ===== ADMIN PANEL =====
         const adminGrid = document.getElementById('adminGrid');
 
         function renderAdmin() {
             adminGrid.innerHTML = '';
-            const priceItem = document.createElement('div');
-            priceItem.className = 'admin-item';
-            priceItem.innerHTML = `
-                <div class="admin-item-label">سعر جرام الذهب عيار 21 (السعر الأساسي)</div>
-                <input type="number" class="admin-input" id="adminBasePrice" value="${basePrice21}">
-                <div style="color:#666;font-size:11px;margin-top:5px;">عيار 24 = 21 × 8 ÷ 7 | عيار 18 = 21 × 6 ÷ 7</div>
-            `;
-            adminGrid.appendChild(priceItem);
 
-            [...goldData.grams, ...goldData.bars].forEach(item => {
+            const price21Item = document.createElement('div');
+            price21Item.className = 'admin-item';
+            price21Item.innerHTML = `
+                <div class="admin-item-label">سعر جرام الذهب عيار 21</div>
+                <input type="number" class="admin-input" id="adminPrice21" value="${basePrice21}">
+            `;
+            adminGrid.appendChild(price21Item);
+
+            const price24Item = document.createElement('div');
+            price24Item.className = 'admin-item';
+            price24Item.innerHTML = `
+                <div class="admin-item-label">سعر جرام الذهب عيار 24</div>
+                <input type="number" class="admin-input" id="adminPrice24" value="${basePrice24}">
+                <div style="color:#666;font-size:11px;margin-top:5px;">عيار 18 = 21 × 6 ÷ 7</div>
+            `;
+            adminGrid.appendChild(price24Item);
+
+            [...bars24Data, ...bars21Data].forEach(item => {
                 const div = document.createElement('div');
                 div.className = 'admin-item';
                 div.innerHTML = `
@@ -938,16 +1166,21 @@
         }
 
         function savePrices() {
-            const newPrice = parseInt(document.getElementById('adminBasePrice').value) || 7030;
-            basePrice21 = newPrice;
-            [...goldData.grams, ...goldData.bars].forEach(item => {
+            const newPrice21 = parseInt(document.getElementById('adminPrice21').value) || 6800;
+            const newPrice24 = parseInt(document.getElementById('adminPrice24').value) || 7771;
+            basePrice21 = newPrice21;
+            basePrice24 = newPrice24;
+
+            [...bars24Data, ...bars21Data].forEach(item => {
                 const input = document.getElementById(`admin_${item.id}`);
                 if (input) item.manufacturing = parseInt(input.value) || item.manufacturing;
             });
+
+            document.getElementById('zakatPrice').value = basePrice21;
             renderTicker();
             renderKaratBoxes();
             renderCards();
-            calculate();
+            calculateZakat();
             updateTimestamp();
             toggleAdmin();
         }
@@ -964,34 +1197,35 @@
             text += `━━━━━━━━━━━━━━━\n`;
             text += `*أسعار الذهب اليوم:*\n`;
             text += `• عيار 21: ${basePrice21.toLocaleString()} ج/جرام\n`;
-            text += `• عيار 24: ${getPrice24().toLocaleString()} ج/جرام\n`;
+            text += `• عيار 24: ${basePrice24.toLocaleString()} ج/جرام\n`;
             text += `• عيار 18: ${getPrice18().toLocaleString()} ج/جرام\n\n`;
-            text += `*أسعار سبائك الذهب عيار 21:*\n`;
-            goldData.grams.forEach(item => {
-                const total = (basePrice21 * item.weight) + (item.manufacturing * item.weight) - (item.cashBack * item.weight);
-                text += `• ${item.name}: ${total.toLocaleString()} ج\n`;
+
+            text += `*سبائك عيار 24:*\n`;
+            bars24Data.forEach(item => {
+                const total = (basePrice24 * item.weight) + (item.manufacturing * item.weight) - (item.cashBack * item.weight);
+                text += `• ${item.name}: ${Math.round(total).toLocaleString()} ج\n`;
             });
-            text += `\n*السبائك:*\n`;
-            goldData.bars.forEach(item => {
+
+            text += `\n*سبائك عيار 21:*\n`;
+            bars21Data.forEach(item => {
                 const total = (basePrice21 * item.weight) + (item.manufacturing * item.weight) - (item.cashBack * item.weight);
-                text += `• ${item.name}: ${total.toLocaleString()} ج\n`;
+                text += `• ${item.name}: ${Math.round(total).toLocaleString()} ج\n`;
             });
+
             text += `\n📞 للطلب والاستفسار\n`;
             text += `✦ مجوهرات المدينة - حسام نصار ✦`;
+
             const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text)}`;
             window.open(whatsappUrl, '_blank');
         }
 
-        calcType.addEventListener('change', calculate);
-        calcQty.addEventListener('input', calculate);
-
+        // ===== INIT =====
         renderTicker();
         renderKaratBoxes();
         renderCards();
-        populateCalcOptions();
         renderAdmin();
         updateTimestamp();
-        calculate();
+        calculateZakat();
     </script>
 </body>
 </html>
