@@ -38,7 +38,6 @@
             width: 100%;
         }
 
-        /* ===== HEADER ===== */
         .header {
             background: linear-gradient(135deg, #1a0a00 0%, #0a0a0a 50%, #1a0a00 100%);
             border-bottom: 3px solid var(--gold-primary);
@@ -122,7 +121,6 @@
             letter-spacing: 2px;
         }
 
-        /* ===== TICKER ===== */
         .ticker-wrapper {
             background: linear-gradient(90deg, #1a0a00, #0a0a0a, #1a0a00);
             border-top: 1px solid rgba(212, 175, 55, 0.3);
@@ -175,7 +173,6 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* ===== KARAT BOXES ===== */
         .karat-section {
             padding: 15px 10px 5px;
             flex-shrink: 0;
@@ -242,14 +239,17 @@
             margin-right: 2px;
         }
 
-        .karat-formula {
-            font-size: 10px;
-            color: rgba(176, 176, 176, 0.6);
+        .karat-purity {
+            font-size: 12px;
+            color: var(--gold-primary);
             margin-top: 5px;
-            font-weight: 500;
+            font-weight: 700;
+            background: rgba(212, 175, 55, 0.1);
+            padding: 3px 10px;
+            border-radius: 50px;
+            display: inline-block;
         }
 
-        /* ===== SECTIONS ===== */
         .main-content {
             flex: 1;
             display: flex;
@@ -279,7 +279,6 @@
             font-size: 15px;
         }
 
-        /* ===== CARDS ===== */
         .cards-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -426,7 +425,6 @@
         .price-row.total .price-value { font-size: 17px; color: var(--gold-light); }
         .price-currency { font-size: 11px; color: var(--text-secondary); margin-right: 2px; }
 
-        /* ===== CALCULATOR ===== */
         .calculator-section {
             background: linear-gradient(135deg, var(--black-card), var(--black-secondary));
             border: 1px solid rgba(212, 175, 55, 0.2);
@@ -494,7 +492,6 @@
         .result-value { font-size: 26px; font-weight: 900; color: var(--gold-primary); direction: ltr; }
         .result-currency { font-size: 16px; color: var(--gold-light); }
 
-        /* ===== ACTIONS ===== */
         .actions-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -541,7 +538,6 @@
             color: var(--gold-primary);
         }
 
-        /* ===== FOOTER ===== */
         .footer {
             text-align: center;
             padding: 15px 10px;
@@ -580,7 +576,6 @@
             transform: translateY(-2px);
         }
 
-        /* ===== ADMIN PANEL ===== */
         .admin-panel {
             display: none;
             position: fixed;
@@ -693,15 +688,13 @@
         ::-webkit-scrollbar-track { background: var(--black-primary); }
         ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
     </style>
+<base target="_blank">
 </head>
 <body>
     <div class="app-wrapper">
-        <!-- HEADER -->
         <header class="header">
             <div class="logo-container">
-                <div class="logo-icon">
-                    <i class="fas fa-gem"></i>
-                </div>
+                <div class="logo-icon"><i class="fas fa-gem"></i></div>
                 <div>
                     <div class="brand-name">مجوهرات المدينة</div>
                     <div class="brand-subtitle">حسام نصار</div>
@@ -710,45 +703,34 @@
             </div>
         </header>
 
-        <!-- TICKER -->
         <div class="ticker-wrapper">
-            <div class="ticker-track" id="tickerTrack">
-                <!-- Content injected by JS -->
-            </div>
+            <div class="ticker-track" id="tickerTrack"></div>
         </div>
 
-        <!-- KARAT BOXES -->
         <div class="karat-section">
             <div class="karat-grid">
                 <div class="karat-box">
                     <div class="karat-label"><i class="fas fa-certificate"></i> عيار 21</div>
-                    <div class="karat-price">
-                        <span id="price21">7030</span><span class="karat-currency">ج/جرام</span>
-                    </div>
-                    <div class="karat-formula">السعر الأساسي</div>
+                    <div class="karat-price"><span id="price21">7030</span><span class="karat-currency">ج/جرام</span></div>
+                    <div class="karat-purity">نقاء 87.5%</div>
                 </div>
                 <div class="karat-box">
                     <div class="karat-label"><i class="fas fa-certificate"></i> عيار 24</div>
-                    <div class="karat-price">
-                        <span id="price24">8034</span><span class="karat-currency">ج/جرام</span>
-                    </div>
-                    <div class="karat-formula">21 × 8 ÷ 7</div>
+                    <div class="karat-price"><span id="price24">8034</span><span class="karat-currency">ج/جرام</span></div>
+                    <div class="karat-purity">نقاء 99.9%</div>
                 </div>
                 <div class="karat-box">
                     <div class="karat-label"><i class="fas fa-certificate"></i> عيار 18</div>
-                    <div class="karat-price">
-                        <span id="price18">6026</span><span class="karat-currency">ج/جرام</span>
-                    </div>
-                    <div class="karat-formula">21 × 6 ÷ 7</div>
+                    <div class="karat-price"><span id="price18">6026</span><span class="karat-currency">ج/جرام</span></div>
+                    <div class="karat-purity">نقاء 75%</div>
                 </div>
             </div>
         </div>
 
-        <!-- MAIN CONTENT -->
         <div class="main-content">
             <div class="section-title">
                 <i class="fas fa-coins"></i>
-                <h2>أسعار الجنيهات الذهب</h2>
+                <h2>أسعار سبائك الذهب عيار 21</h2>
             </div>
             <div class="cards-grid" id="gramsContainer"></div>
 
@@ -758,7 +740,6 @@
             </div>
             <div class="cards-grid" id="barsContainer"></div>
 
-            <!-- CALCULATOR -->
             <div class="calculator-section">
                 <div class="calc-title"><i class="fas fa-calculator"></i> حاسبة الذهب الذكية</div>
                 <div class="calc-grid">
@@ -777,18 +758,12 @@
                 </div>
             </div>
 
-            <!-- ACTIONS -->
             <div class="actions-grid">
-                <button class="action-btn whatsapp" onclick="shareWhatsApp()">
-                    <i class="fab fa-whatsapp"></i> قناة الواتساب
-                </button>
-                <button class="action-btn secondary" onclick="window.print()">
-                    <i class="fas fa-print"></i> طباعة
-                </button>
+                <button class="action-btn whatsapp" onclick="shareWhatsApp()"><i class="fab fa-whatsapp"></i> قناة الواتساب</button>
+                <button class="action-btn secondary" onclick="window.print()"><i class="fas fa-print"></i> طباعة</button>
             </div>
         </div>
 
-        <!-- FOOTER -->
         <footer class="footer">
             <div class="footer-text">جميع الأسعار بالجنيه المصري وتشمل ضريبة القيمة المضافة</div>
             <div class="footer-brand">مجوهرات المدينة - حسام نصار</div>
@@ -800,7 +775,6 @@
         </footer>
     </div>
 
-    <!-- ADMIN PANEL -->
     <div class="admin-panel" id="adminPanel">
         <div class="admin-header">
             <div class="admin-title">⚙️ لوحة تحديث الأسعار</div>
@@ -815,7 +789,6 @@
     <div class="admin-trigger" onclick="toggleAdmin()"></div>
 
     <script>
-        // ===== DATA =====
         let basePrice21 = 7030;
 
         function getPrice24() { return Math.round(basePrice21 * 8 / 7); }
@@ -838,12 +811,10 @@
             ]
         };
 
-        // ===== RENDER TICKER =====
         function renderTicker() {
             const p21 = basePrice21.toLocaleString();
             const p24 = getPrice24().toLocaleString();
             const p18 = getPrice18().toLocaleString();
-
             const content = `
                 <div class="ticker-item"><i class="fas fa-certificate"></i> عيار 21: <span class="price">${p21}</span> <span class="currency">ج/جرام</span></div>
                 <div class="ticker-separator">✦</div>
@@ -854,18 +825,15 @@
                 <div class="ticker-item"><i class="fas fa-coins"></i> سعر الأونصة العالمي: <span class="price">--</span> <span class="currency">$</span></div>
                 <div class="ticker-separator">✦</div>
             `;
-            // Duplicate for seamless loop
             document.getElementById('tickerTrack').innerHTML = content + content + content;
         }
 
-        // ===== RENDER KARAT BOXES =====
         function renderKaratBoxes() {
             document.getElementById('price21').textContent = basePrice21.toLocaleString();
             document.getElementById('price24').textContent = getPrice24().toLocaleString();
             document.getElementById('price18').textContent = getPrice18().toLocaleString();
         }
 
-        // ===== RENDER CARDS =====
         const gramsContainer = document.getElementById('gramsContainer');
         const barsContainer = document.getElementById('barsContainer');
 
@@ -888,10 +856,10 @@
                             <div class="gold-icon"><i class="fas fa-coins"></i></div>
                             <div>
                                 <div class="gold-type">${item.name}</div>
-                                <div class="gold-purity">عيار 21 - مصنعية ${item.manufacturing} ج/جرام</div>
+                                <div class="gold-purity">عيار 21 - ${item.weight} جرام</div>
                             </div>
                         </div>
-                        <div class="weight-badge">${item.weight} جرام</div>
+                        <div class="weight-badge">${item.manufacturing} ج/جرام</div>
                     </div>
                     <div class="card-body">
                         <div class="price-row">
@@ -900,7 +868,7 @@
                         </div>
                         <div class="price-row manufacturing">
                             <div class="price-label"><i class="fas fa-industry" style="font-size:10px;"></i> المصنعية</div>
-                            <div class="price-value">${totalManufacturing.toLocaleString()}<span class="price-currency">ج</span></div>
+                            <div class="price-value">${item.manufacturing.toLocaleString()}<span class="price-currency">ج/جرام</span></div>
                         </div>
                         <div class="price-row total">
                             <div class="price-label"><i class="fas fa-money-bill-wave" style="font-size:10px;"></i> الإجمالي</div>
@@ -911,7 +879,6 @@
             `;
         }
 
-        // ===== CALCULATOR =====
         const calcType = document.getElementById('calcType');
         const calcQty = document.getElementById('calcQty');
         const calcResult = document.getElementById('calcResult');
@@ -919,17 +886,14 @@
         function calculate() {
             const selectedId = calcType.value;
             const qty = parseInt(calcQty.value) || 1;
-
             let item = goldData.grams.find(g => g.id === selectedId);
             if (!item) item = goldData.bars.find(b => b.id === selectedId);
             if (!item) return;
-
             const totalGramPrice = basePrice21 * item.weight * qty;
             const totalManufacturing = item.manufacturing * item.weight * qty;
             const finalPrice = totalGramPrice + totalManufacturing;
             const cashBackTotal = item.cashBack * item.weight * qty;
             const netPrice = finalPrice - cashBackTotal;
-
             calcResult.textContent = netPrice.toLocaleString();
             calcResult.classList.remove('price-updated');
             void calcResult.offsetWidth;
@@ -946,13 +910,10 @@
             });
         }
 
-        // ===== ADMIN PANEL =====
         const adminGrid = document.getElementById('adminGrid');
 
         function renderAdmin() {
             adminGrid.innerHTML = '';
-
-            // Base price
             const priceItem = document.createElement('div');
             priceItem.className = 'admin-item';
             priceItem.innerHTML = `
@@ -962,7 +923,6 @@
             `;
             adminGrid.appendChild(priceItem);
 
-            // Manufacturing fees
             [...goldData.grams, ...goldData.bars].forEach(item => {
                 const div = document.createElement('div');
                 div.className = 'admin-item';
@@ -981,12 +941,10 @@
         function savePrices() {
             const newPrice = parseInt(document.getElementById('adminBasePrice').value) || 7030;
             basePrice21 = newPrice;
-
             [...goldData.grams, ...goldData.bars].forEach(item => {
                 const input = document.getElementById(`admin_${item.id}`);
                 if (input) item.manufacturing = parseInt(input.value) || item.manufacturing;
             });
-
             renderTicker();
             renderKaratBoxes();
             renderCards();
@@ -999,10 +957,8 @@
             const now = new Date();
             const timeString = now.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' });
             const dateString = now.toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' });
-            // You can display this somewhere if needed
         }
 
-        // ===== WHATSAPP SHARE =====
         function shareWhatsApp() {
             let text = `*مجوهرات المدينة - حسام نصار* 🏆\n`;
             text += `منذ 1999 - تاجر ذهب معتمد\n`;
@@ -1011,31 +967,25 @@
             text += `• عيار 21: ${basePrice21.toLocaleString()} ج/جرام\n`;
             text += `• عيار 24: ${getPrice24().toLocaleString()} ج/جرام\n`;
             text += `• عيار 18: ${getPrice18().toLocaleString()} ج/جرام\n\n`;
-
-            text += `*الجنيهات:*\n`;
+            text += `*أسعار سبائك الذهب عيار 21:*\n`;
             goldData.grams.forEach(item => {
                 const total = (basePrice21 * item.weight) + (item.manufacturing * item.weight) - (item.cashBack * item.weight);
                 text += `• ${item.name}: ${total.toLocaleString()} ج\n`;
             });
-
             text += `\n*السبائك:*\n`;
             goldData.bars.forEach(item => {
                 const total = (basePrice21 * item.weight) + (item.manufacturing * item.weight) - (item.cashBack * item.weight);
                 text += `• ${item.name}: ${total.toLocaleString()} ج\n`;
             });
-
             text += `\n📞 للطلب والاستفسار\n`;
             text += `✦ مجوهرات المدينة - حسام نصار ✦`;
-
             const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text)}`;
             window.open(whatsappUrl, '_blank');
         }
 
-        // ===== EVENTS =====
         calcType.addEventListener('change', calculate);
         calcQty.addEventListener('input', calculate);
 
-        // ===== INIT =====
         renderTicker();
         renderKaratBoxes();
         renderCards();
